@@ -1,0 +1,22 @@
+h1{
+    font-family: cursive;
+    font: size 200px;
+    text-decoration-color: coral;
+    background-color: chartreuse;
+    border: 10px solid #a7233a;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 22px;
+    color: white;
+    font-weight: 500;
+    background: #001829;
+}
+
+.Pic{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin: 30px auto;
+    gap: 100px;
+    padding: 20px;
+}

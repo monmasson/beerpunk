@@ -1,25 +1,57 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Route, Routes,useNavigate } from 'react-router-dom'
+import Home from './components/Home';
+import Header from './components/Header'
+import { useState } from 'react';
+import axios from 'axios';
+import Beer from './components/Beer';
+
 
 function App() {
+
+  const navigate = useNavigate();
+  const [currentBeer, setCurrentBeer] = useState([]);// one variable that reperesents the current state
+//
+
+
+
+
+
+  const fetchIndividualData = async (url) => {
+    const response = await axios.get(url)
+    setCurrentBeer(response.data)
+    navigate('/beer')//taking local page
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+
+      <Route path="/" element={<Home fetch={fetchIndividualData} />} />
+        <Route path="/beer" element={<Beer current={currentBeer} />} />
+       
+
+      </Routes>
     </div>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
